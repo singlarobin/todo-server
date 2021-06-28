@@ -13,7 +13,7 @@ const getOneTask = (req, res) => {
   }
   return res
     .status(400)
-    .json({ success: false, messsage: `No Task with id: ${id}.` });
+    .json({ success: false, data: `No Task with id: ${id}.` });
 };
 
 const createNewTask = (req, res) => {
@@ -23,7 +23,7 @@ const createNewTask = (req, res) => {
   if (!toDoName) {
     return res
       .status(400)
-      .json({ success: false, message: `Please proide the task Name!` });
+      .json({ success: false, data: `Please proide the task Name!` });
   }
   data.push({
     id: idCount,
@@ -39,14 +39,14 @@ const updateTask = (req, res) => {
   if (!item) {
     return res
       .status(200)
-      .json({ success: false, message: `Please provide the valid Task Id!` });
+      .json({ success: false, data: `Please provide the valid Task Id!` });
   }
 
   const toDoName = req.body.name;
   if (!toDoName) {
     return res.status(400).json({
       success: true,
-      message: `Please provide the task Name to Update`,
+      data: `Please provide the task Name to Update`,
     });
   }
 
@@ -64,7 +64,7 @@ const deleteTask = (req, res) => {
   if (!item) {
     return res
       .status(400)
-      .json({ success: false, message: `Please provide valid id!` });
+      .json({ success: false, data: `Please provide valid id!` });
   }
 
   data = data.filter((element) => element.id !== Number(toDoId));
@@ -72,7 +72,7 @@ const deleteTask = (req, res) => {
 };
 
 const invalidUrl = (req, res) => {
-  res.status(404).json({ success: false, message: `Invalid Url!!!` });
+  res.status(404).json({ success: false, data: `Invalid Url!!!` });
 };
 
 module.exports = {
